@@ -1,7 +1,4 @@
-/**
- * Largely ignore this. Its just a cobbled together express server to serve it on Heroku.
- * Its just the bulk of the express boilerplate to get it up.
- */
+// Store environment variables in the .env file that are stored in process.env.ENV_KEY
 require('dotenv').load();
 
 const express = require('express');
@@ -10,7 +7,7 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const router = express.Router();
-const api = require('./src/api/routes/api');
+const api = require('./api/routes/api/api');
 const http = require('http');
 const app = express();
 
@@ -25,11 +22,13 @@ app.get('/', (req, res, next) => {
 	res.redirect('/app').end();
 });
 
+// Root for web app
 app.use('/app', (req, res, next) => {
 	process.stdout.write('\n--- Hitting ALL route. Method: ' + req.method + ', Path: ' + req.path + ' ---\n');
 	res.sendFile(path.join(__dirname+'/dist/index.html'));
 });
 
+// API routes
 app.use('/api', api);
 
 // catch 404 and forward to error handler
