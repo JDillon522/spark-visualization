@@ -34,8 +34,9 @@ export function handleGetTagsSuccess(state, action) {
 
 export function handleSelectTag(state, action) {
   const newStoreState: State = _.cloneDeep(state);
-  newStoreState.selected = action.payload;
+  newStoreState.selected = action.payload || newStoreState.selected;
   return newStoreState;
 }
 
 export const getTags = (state: State) => _.values(state.list);
+export const getSelectedTag = (state: State) => state.selected;

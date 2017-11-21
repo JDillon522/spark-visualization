@@ -12,6 +12,7 @@ export const reducers: ActionReducerMap<State> = {
 
 export const metaReducers: MetaReducer<State>[] = [];
 
-// Demo
+// Tag
 export const getTagState = (state: State) => state.tags;
 export const getTagData = createSelector(getTagState, fromTags.getTags);
+export const getSelectedTag = createSelector(getTagState, fromTags.getSelectedTag);

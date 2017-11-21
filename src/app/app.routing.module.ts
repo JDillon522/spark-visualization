@@ -17,13 +17,12 @@ const appRoutes: Routes = [
   },
   {
     path: 'details',
+    redirectTo: 'tags',
+    pathMatch: 'full'
+  },
+  {
+    path: 'details/:id',
     component: DetailsComponent,
-    children: [
-      {
-        path: ':id',
-        component: DetailsComponent
-      }
-    ]
   },
   { path: '**', component: FourOFourComponent }
 ];

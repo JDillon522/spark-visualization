@@ -5,10 +5,10 @@
 
     <span>
         <mat-menu #appMenu="matMenu">
-            <button mat-menu-item routerLink="/tags" routerLinkActive="active">
+            <button mat-menu-item routerLink="/tags">
                 Tags
             </button>
-            <button mat-menu-item routerLink="/details" routerLinkActive="active">
+            <button mat-menu-item (click)="goToDetails()">
                 Details
             </button>
         </mat-menu>

@@ -20,4 +20,8 @@ export class AppComponent implements OnInit {
   ngOnInit( ) {
     this.store.dispatch(new TagActions.GetTags());
   }
+
+  goToDetails() {
+    this.store.dispatch(new TagActions.SelectTag(null, true));
+  }
 }

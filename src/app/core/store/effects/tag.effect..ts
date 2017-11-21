@@ -32,11 +32,13 @@ export class TagEffects {
 
     @Effect() selectTag$: Observable<Action> = this.actions$
         .ofType(TagActions.SELECT_TAG)
-        .concatMap((action) => {
+        .withLatestFrom(this.store)
+        .concatMap(([action, state]) => {
             const actions = new Set();
+
             // action.add(new DetailsActions.GetDetails(action.payload.tag));
             if (action['redirect']) {
-                this.router.navigate(['details', action['payload'].tagId]);
+                this.router.navigate(['details', action['payload'] ? action['payload'].tagId : state.tags.selected.tagId]);
             }
 
             return Array.from(actions);

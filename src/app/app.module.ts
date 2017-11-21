@@ -32,7 +32,7 @@ import { AppSharedModule } from './shared/shared.module';
     ]),
     // Angular
     HttpClientModule,
-    // FormsModule,
+    FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     BrowserModule,
