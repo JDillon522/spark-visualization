@@ -5,6 +5,8 @@ import { Subscription } from 'rxjs/Subscription';
 import { Tag } from '../../core/models/tag';
 import { DataPoint } from '../../core/models/dataPoint';
 import { LineChart } from '../../core/models/chartTypes';
+import * as moment from 'moment';
+import * as DetailsActions from '../../core/store/actions/details.actions';
 
 @Component({
   selector: 'app-details',
@@ -17,7 +19,8 @@ export class DetailsComponent implements OnInit, OnDestroy {
 
   public tagMeta: Tag;
   public details: LineChart;
-
+  public start: string = '';
+  public end: string = '';
 
   constructor(
     private store: Store<fromRoot.State>,
@@ -31,7 +34,11 @@ export class DetailsComponent implements OnInit, OnDestroy {
 
     this.detailsSubscription = this.store.select(fromRoot.getDetails).subscribe(details => {
       this.details = details;
-      console.log(details)
+      if (details) {
+        const dateRange = details.datasets[0].label.split(' ');
+        this.start = dateRange[0];
+        this.end = dateRange[2];
+      }
     });
   }
 
@@ -40,5 +47,14 @@ export class DetailsComponent implements OnInit, OnDestroy {
     this.detailsSubscription.unsubscribe();
   }
 
+  onDateChange(event, date) {
+    const formattedDate = moment(event.value, 'ddd MMM DD YYYY').format('YYYY-MM-DD');
+    if (date === 'start') {
+      this.start = formattedDate;
+    } else {
+      this.end = formattedDate;
+    }
 
+    this.store.dispatch(new DetailsActions.GetDetails(this.tagMeta.tagId, this.start, this.end));
+  }
 }

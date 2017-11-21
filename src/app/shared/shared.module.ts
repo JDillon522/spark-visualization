@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import {
   MatCardModule, MatToolbarModule, MatMenuModule, MatIconModule, MatButtonModule, MatDialogModule, MatGridListModule,
   MatTooltipModule, MatFormFieldModule, MatInputModule, MatListModule, MatExpansionModule, MatProgressSpinnerModule, MatCheckboxModule,
-  MatTableModule, MatSortModule, MatTabsModule
+  MatTableModule, MatSortModule, MatTabsModule, MatDatepickerModule, MatNativeDateModule
 } from '@angular/material';
 import { DataTableModule, SharedModule, ChartModule } from 'primeng/primeng';
 import { CdkTableModule } from '@angular/cdk/table';
@@ -31,7 +31,9 @@ import { CdkTableModule } from '@angular/cdk/table';
     DataTableModule,
     SharedModule,
     ChartModule,
-    MatTabsModule
+    MatTabsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
 
     // MatTableModule,
     // CdkTableModule,

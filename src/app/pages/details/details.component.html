@@ -1,3 +1,21 @@
+<div class="dateRange">
+    <mat-form-field>
+        <input matInput [matDatepicker]="from" placeholder="From" [value]="start" (dateChange)="onDateChange($event, 'start')">
+        <mat-datepicker-toggle matSuffix [for]="from"></mat-datepicker-toggle>
+        <mat-datepicker #from [startAt]="start"></mat-datepicker>
+    </mat-form-field>
+
+    <div class="filler"></div>
+
+    <mat-form-field>
+        <input matInput [matDatepicker]="to" placeholder="To" [value]="end" (dateChange)="onDateChange($event, 'end')">
+        <mat-datepicker-toggle matSuffix [for]="to"></mat-datepicker-toggle>
+        <mat-datepicker #to [startAt]="end"></mat-datepicker>
+    </mat-form-field>
+</div>
+
+
+
 <p-chart
   type="line"
   [data]="details">

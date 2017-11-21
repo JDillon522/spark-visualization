@@ -1,0 +1,10 @@
+.dateRange {
+    display: flex;
+    mat-form-field {
+        width: 100%;
+        margin: 0 20px;
+    }
+    .filler {
+        flex: 1 1 auto;
+    }
+}

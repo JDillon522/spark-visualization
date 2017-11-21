@@ -37,8 +37,8 @@ export class TagEffects {
         .withLatestFrom(this.store)
         .concatMap(([action, state]) => {
             const actions = new Set();
-            const start = moment().format('YYYY-MM-DD');
-            const end = moment().add(2, 'd').format('YYYY-MM-DD');
+            const start = moment().subtract(2, 'd').format('YYYY-MM-DD');
+            const end = moment().format('YYYY-MM-DD');
             const tag: Tag = action['payload'] ? action['payload'] : state.tags.selected;
 
             actions.add(new DetailsActions.GetDetails(tag.tagId, start, end));
