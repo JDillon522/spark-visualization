@@ -15,14 +15,14 @@ const initialState: State = {
 export function reducer(state = initialState, action: DetailsActions.Actions): State {
   switch (action.type) {
     case DetailsActions.GET_DETAILS_SUCCESS:
-      return handleGetTagsSuccess(state, action);
+      return handleGetDetailsSuccess(state, action);
 
     default:
       return state;
   }
 }
 
-export function handleGetTagsSuccess(state, action) {
+export function handleGetDetailsSuccess(state, action) {
   const newStoreState: State = _.cloneDeep(state);
   newStoreState.data = action.details;
   return newStoreState;

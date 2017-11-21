@@ -22,4 +22,4 @@ export const getSelectedTag = createSelector(getTagState, fromTags.getSelectedTa
 
 // Details
 export const getDetailsState = (state: State) => state.details;
-export const getDetailsData = createSelector(getDetailsState, fromDetails.getDetails);
+export const getDetails = createSelector(getDetailsState, fromDetails.getDetails);

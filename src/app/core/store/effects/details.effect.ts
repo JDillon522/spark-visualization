@@ -10,6 +10,7 @@ import * as _ from 'lodash';
 import { Tag } from '../../models/tag';
 import * as moment from 'moment';
 import { DetailsService } from '../../../services/details/details.service';
+import { DataPoint } from '../../models/dataPoint';
 
 @Injectable()
 export class DetailsEffects {
@@ -27,9 +28,8 @@ export class DetailsEffects {
             const start = action['start'];
             const end = action['end'];
 
-            return this.detailsService.getDetails(id, start, end).mergeMap(response => {
-                console.log('RESPONSE', response)
-                return Observable.empty()
-            })
+            return this.detailsService.getDetails(id, start, end).mergeMap((response: DataPoint[]) => {
+                return Array.from(new Set().add(new DetailsActions.GetDetailsSuccess(response)));
+            });
         });
 }
