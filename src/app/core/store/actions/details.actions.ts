@@ -16,7 +16,7 @@ export class GetDetails implements Action {
 
 export class GetDetailsSuccess implements Action {
     readonly type = GET_DETAILS_SUCCESS;
-    constructor(private details: DataPoint[]) {}
+    constructor(private details: DataPoint[], private start: string, private end: string) {}
 }
 
 export class GetDetailsError implements Action {

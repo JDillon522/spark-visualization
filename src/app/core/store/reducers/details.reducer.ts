@@ -24,7 +24,7 @@ export function reducer(state = initialState, action: DetailsActions.Actions): S
 
 export function handleGetDetailsSuccess(state, action) {
   const newStoreState: State = _.cloneDeep(state);
-  newStoreState.data = formatLineChart(action.details, '2017-11-21', '2017-11-23');
+  newStoreState.data = formatLineChart(action.details, action.start, action.end);
   return newStoreState;
 }
 

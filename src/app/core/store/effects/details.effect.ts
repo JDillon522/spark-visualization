@@ -29,7 +29,7 @@ export class DetailsEffects {
             const end = action['end'];
 
             return this.detailsService.getDetails(id, start, end).mergeMap((response: DataPoint[]) => {
-                return Array.from(new Set().add(new DetailsActions.GetDetailsSuccess(response)));
+                return Array.from(new Set().add(new DetailsActions.GetDetailsSuccess(response, start, end)));
             });
         });
 }
