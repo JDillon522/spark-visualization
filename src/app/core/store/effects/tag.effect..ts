@@ -5,9 +5,11 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import * as fromRoot from '../application-state';
 import * as TagActions from '../actions/tag.actions';
+import * as DetailsActions from '../actions/details.actions';
 import * as _ from 'lodash';
 import { TimeseriesService } from '../../../services/timeseries/timeseries.service';
 import { Tag } from '../../models/tag';
+import * as moment from 'moment';
 
 @Injectable()
 export class TagEffects {
@@ -35,10 +37,13 @@ export class TagEffects {
         .withLatestFrom(this.store)
         .concatMap(([action, state]) => {
             const actions = new Set();
+            const start = moment().format('YYYY-MM-DD');
+            const end = moment().add(2, 'd').format('YYYY-MM-DD');
+            const tag: Tag = action['payload'] ? action['payload'] : state.tags.selected;
 
-            // action.add(new DetailsActions.GetDetails(action.payload.tag));
+            actions.add(new DetailsActions.GetDetails(tag.tagId, start, end));
             if (action['redirect']) {
-                this.router.navigate(['details', action['payload'] ? action['payload'].tagId : state.tags.selected.tagId]);
+                this.router.navigate(['details', tag.tagId]);
             }
 
             return Array.from(actions);

@@ -16,6 +16,7 @@ import { LogPipe } from './pipes/log/log.pipe';
 import { MapToIterablePipe } from './pipes/map-to-iterable/map-to-iterable.pipe';
 import { TagEffects } from './core/store/effects/tag.effect.';
 import { AppSharedModule } from './shared/shared.module';
+import { DetailsEffects } from './core/store/effects/details.effect';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { AppSharedModule } from './shared/shared.module';
     // NGRX
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([
-      TagEffects
+      TagEffects,
+      DetailsEffects
     ]),
     // Angular
     HttpClientModule,
