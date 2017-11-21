@@ -47,7 +47,8 @@
     "reselect": "^3.0.1",
     "rxjs": "^5.4.2",
     "serve-favicon": "~2.3.0",
-    "zone.js": "^0.8.14"
+    "zone.js": "^0.8.14",
+    "typescript": "~2.3.3"
   },
   "devDependencies": {
     "@ngrx/store-devtools": "^3.2.4",
@@ -68,6 +69,7 @@
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",
     "typescript": "~2.3.3",
+    "@angular/compiler": "^4.2.4",
     "@angular/compiler-cli": "^4.2.4"
   }
 }
