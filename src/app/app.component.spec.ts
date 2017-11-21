@@ -12,7 +12,6 @@ import { AppRoutingModule } from './app.routing.module';
 import { PagesModule } from './pages/pages.module';
 import * as TagActions from './core/store/actions/tag.actions';
 import { By } from '@angular/platform-browser';
-import { click } from './testingHelpers/helpers';
 
 describe('AppComponent', () => {
   let store: Store<fromRoot.State>;
