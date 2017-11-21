@@ -1,28 +1,17 @@
-<!-- <mat-table #table [dataSource]="tags" matSort>
+<mat-form-field class="full-width">
+  <input matInput placeholder="Search" #tagFilter name="search">
+  <mat-icon matSuffix matTooltip="Clear search">search</mat-icon>
+</mat-form-field>
 
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-
-  <ng-container matColumnDef="name" mat-sort-header>
-    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.label}} </mat-cell>
-  </ng-container>
-
-  <ng-container matColumnDef="unit" mat-sort-header>
-    <mat-header-cell *matHeaderCellDef> Unit </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.unit}} </mat-cell>
-  </ng-container>
-
-  <ng-container matColumnDef="features" mat-sort-header>
-    <mat-header-cell *matHeaderCellDef> Features </mat-header-cell>
-    <mat-cell *matCellDef="let element">
-      <span *ngFor="let feature of element.features">{{feature}}, </span>
-    </mat-cell>
-  </ng-container>
-
-</mat-table> -->
-
-<p-dataTable [value]="tags">
-  <p-column field="label" header="Name" sort="true"></p-column>
-  <p-column field="unit" header="Unit" sort="true"></p-column>
+<p-dataTable
+  [value]="tags"
+  [sortMode]="multiple"
+  [globalFilter]="tagFilter">
+  <p-column field="label" header="Name" [sortable]="true"></p-column>
+  <p-column field="unit" header="Unit" [sortable]="true"></p-column>
+  <p-column field="features" header="Features" [sortable]="true">
+    <ng-template let-col let-tag="rowData" pTemplate="body">
+        <span *ngFor="let feature of tag.features">{{feature}} </span>
+    </ng-template>
+  </p-column>
 </p-dataTable>
