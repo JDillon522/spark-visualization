@@ -32,20 +32,30 @@ export const getDetails = (state: State) => state.data;
 
 function formatLineChart(data, start, end): LineChart {
   const durationInHours = Math.abs(moment(start).diff(moment(end), 'hours'));
-  const dataSet: LineChart = {
-    labels: [],
-    data: []
-  };
+  const labels: string[] = [];
+  const dayLabels: string[] = [start, end];
 
   // Reduce the magnituted of data to points pulled on the hour
   const chunkedData = _.chunk(data, data.length / durationInHours);
   const reducedChunks = _.map(chunkedData, (chunk: DataPoint[]) => chunk[0].value);
-  dataSet.data = reducedChunks;
 
   // Create the list of labels
   for (let index = 0; index < durationInHours; index++) {
-    dataSet.labels.push((index % 24).toString());
+    if (index % 24 === 0) {
+      labels.push(dayLabels.shift());
+    } else {
+      labels.push((index % 24).toString());
+    }
   }
 
-  return dataSet;
+  const lineChart = {
+    labels: labels,
+    datasets: []
+  };
+
+  lineChart.datasets.push({
+    data: reducedChunks,
+    label: `${start} to ${end}`
+  });
+  return lineChart;
 }

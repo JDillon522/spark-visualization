@@ -18,6 +18,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
   public tagMeta: Tag;
   public details: LineChart;
 
+
   constructor(
     private store: Store<fromRoot.State>,
 
@@ -30,6 +31,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
 
     this.detailsSubscription = this.store.select(fromRoot.getDetails).subscribe(details => {
       this.details = details;
+      console.log(details)
     });
   }
 
