@@ -9,26 +9,27 @@ import * as DetailsActions from '../actions/details.actions';
 import * as _ from 'lodash';
 import { Tag } from '../../models/tag';
 import * as moment from 'moment';
+import { DetailsService } from '../../../services/details/details.service';
 
 @Injectable()
 export class DetailsEffects {
     constructor(
         private actions$: Actions,
         private store: Store<fromRoot.State>,
-        private router: Router
+        private router: Router,
+        private detailsService: DetailsService
     ) {}
 
     @Effect() getDetails$: Observable<Action> = this.actions$
         .ofType(DetailsActions.GET_DETAILS)
         .concatMap((action) => {
-            // return this.timeseriesService.getTags().mergeMap((response: Tag[]) => {
-            //     const actions = new Set();
+            const id = action['id'];
+            const start = action['start'];
+            const end = action['end'];
 
-            //     actions.add(new TagActions.GetTagsSuccess(response));
-            //     actions.add(new TagActions.SelectTag(response[0]));
-            //     return Array.from(actions);
-            // });
-            console.log(action)
-            return Observable.empty()
+            return this.detailsService.getDetails(id, start, end).mergeMap(response => {
+                console.log('RESPONSE', response)
+                return Observable.empty()
+            })
         });
 }
