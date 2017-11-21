@@ -21,8 +21,8 @@ import { AppSharedModule } from './shared/shared.module';
 @NgModule({
   declarations: [
     AppComponent,
-    LogPipe,
-    MapToIterablePipe
+    // LogPipe,
+    // MapToIterablePipe
   ],
   imports: [
     // NGRX
@@ -39,7 +39,7 @@ import { AppSharedModule } from './shared/shared.module';
     AppRoutingModule,
     // App
     AppSharedModule,
-    // PipesModule,
+    PipesModule,
     ServicesModule,
     PagesModule
   ],
