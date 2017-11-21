@@ -1,17 +1,17 @@
 import { Action, ActionReducer, ActionReducerMap, MetaReducer, } from '@ngrx/store';
 import { createSelector } from 'reselect';
-import * as fromDemo from './reducers/demo.reducer';
+import * as fromTags from './reducers/tag.reducer';
 
 export interface State {
-    demo: fromDemo.State;
+    tags: fromTags.State;
 }
 
 export const reducers: ActionReducerMap<State> = {
-    demo: fromDemo.reducer
+    tags: fromTags.reducer
 };
 
 export const metaReducers: MetaReducer<State>[] = [];
 
 // Demo
-export const getDemoState = (state: State) => state.demo;
-export const getDemoData = createSelector(getDemoState, fromDemo.getDemoData);
+export const getTagState = (state: State) => state.tags;
+export const getTagData = createSelector(getTagState, fromTags.getTags);

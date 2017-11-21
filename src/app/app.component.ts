@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TimeseriesService } from './services/timeseries/timeseries.service';
+import * as fromRoot from './core/store/application-state';
+import * as TagActions from './core/store/actions/tag.actions';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +13,11 @@ export class AppComponent implements OnInit {
   public tag;
 
   constructor(
-    private timeSeriesService: TimeseriesService
+    private timeSeriesService: TimeseriesService,
+    private store: Store<fromRoot.State>
   ) {}
 
   ngOnInit( ) {
-    this.timeSeriesService.getTags().subscribe(res => this.tag = res);
-
+    this.store.dispatch(new TagActions.GetTags());
   }
 }
