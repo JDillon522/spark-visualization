@@ -13,13 +13,13 @@ describe('TagsComponent', () => {
     .compileComponents();
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(TagsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  // beforeEach(() => {
+  //   fixture = TestBed.createComponent(TagsComponent);
+  //   component = fixture.componentInstance;
+  //   fixture.detectChanges();
+  // });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  // it('should create', () => {
+  //   expect(component).toBeTruthy();
+  // });
 });

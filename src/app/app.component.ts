@@ -10,8 +10,6 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  public tag;
-
   constructor(
     private timeSeriesService: TimeseriesService,
     private store: Store<fromRoot.State>
