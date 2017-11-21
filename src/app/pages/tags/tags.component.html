@@ -7,8 +7,12 @@
 <p-dataTable
   [value]="tags"
   [sortMode]="multiple"
-  [globalFilter]="tagFilter">
+  [globalFilter]="tagFilter"
+  selectionMode="single"
+  [(selection)]="selected"
+  (onRowSelect)="onRowSelect()">
 
+  <p-column field="tagId" header="ID" [sortable]="true"></p-column>
   <p-column field="label" header="Name" [sortable]="true"></p-column>
   <p-column field="unit" header="Unit" [sortable]="true"></p-column>
   <p-column field="features" header="Features" [sortable]="true">

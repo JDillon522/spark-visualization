@@ -14,7 +14,8 @@ export class TagEffects {
     constructor(
         private actions$: Actions,
         private store: Store<fromRoot.State>,
-        private timeseriesService: TimeseriesService
+        private timeseriesService: TimeseriesService,
+        private router: Router
     ) {}
 
     @Effect() getTags$: Observable<Action> = this.actions$
@@ -24,7 +25,20 @@ export class TagEffects {
                 const actions = new Set();
 
                 actions.add(new TagActions.GetTagsSuccess(response));
+                actions.add(new TagActions.SelectTag(response[0]));
                 return Array.from(actions);
             });
+        });
+
+    @Effect() selectTag$: Observable<Action> = this.actions$
+        .ofType(TagActions.SELECT_TAG)
+        .concatMap((action) => {
+            const actions = new Set();
+            // action.add(new DetailsActions.GetDetails(action.payload.tag));
+            if (action['redirect']) {
+                this.router.navigate(['details', action['payload'].tagId]);
+            }
+
+            return Array.from(actions);
         });
 }

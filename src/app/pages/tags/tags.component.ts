@@ -14,7 +14,7 @@ import * as _ from 'lodash';
 export class TagsComponent implements OnInit, OnDestroy {
   public tags: Tag[];
   public displayedColumns = ['name', 'unit', 'features'];
-  public search: string = '';
+  public selected: Tag;
 
   private tagSubscription: Subscription;
 
@@ -30,5 +30,9 @@ export class TagsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.tagSubscription.unsubscribe();
+  }
+
+  onRowSelect() {
+    this.store.dispatch(new TagActions.SelectTag(this.selected, true));
   }
 }

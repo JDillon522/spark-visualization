@@ -19,7 +19,15 @@ export class GetTagsError implements Action {
     constructor(private payload: string) {}
 }
 
+export const SELECT_TAG = '[Tag] Set the selected tag';
+
+export class SelectTag implements Action {
+    readonly type = SELECT_TAG;
+    constructor(private payload: Tag, private redirect?: boolean) {}
+}
+
 export type Actions
     = GetTags
     | GetTagsSuccess
-    | GetTagsError;
+    | GetTagsError
+    | SelectTag;
