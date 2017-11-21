@@ -10,6 +10,9 @@ import { TimeseriesService } from './services/timeseries/timeseries.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app.routing.module';
 import { PagesModule } from './pages/pages.module';
+import * as TagActions from './core/store/actions/tag.actions';
+import { By } from '@angular/platform-browser';
+import { click } from './testingHelpers/helpers';
 
 describe('AppComponent', () => {
   let store: Store<fromRoot.State>;
@@ -41,21 +44,27 @@ describe('AppComponent', () => {
 
     store = TestBed.get(Store);
 
-      spyOn(store, 'dispatch').and.callThrough();
+    spyOn(store, 'dispatch').and.callThrough();
 
-      fixture = TestBed.createComponent(AppComponent);
-      component = fixture.componentInstance;
-      fixture.detectChanges();
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   }));
 
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('should create the app', async(() => {
-  //   const fixture = TestBed.createComponent(AppComponent);
-  //   const app = fixture.debugElement.componentInstance;
-  //   expect(app).toBeTruthy();
-  // }));
+  it('should dispatch an action to load data when created', () => {
+    const action = new TagActions.GetTags();
+
+    expect(store.dispatch).toHaveBeenCalledWith(action);
+  });
+
+  it('should go to details', async(() => {
+    const action = new TagActions.SelectTag(null, true);
+    component.goToDetails();
+    expect(store.dispatch).toHaveBeenCalledWith(action);
+  }));
 
 });
