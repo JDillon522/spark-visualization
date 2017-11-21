@@ -25,13 +25,14 @@ export class DetailsEffects {
 
     @Effect() getDetails$: Observable<Action> = this.actions$
         .ofType(DetailsActions.GET_DETAILS)
-        .concatMap((action) => {
+        .withLatestFrom(this.store)
+        .concatMap(([action, state]) => {
             const id = action['id'];
             const start = action['start'];
             const end = action['end'];
 
             return this.detailsService.getDetails(id, start, end).mergeMap((response: DataPoint[]) => {
-                return Array.from(new Set().add(new DetailsActions.GetDetailsSuccess(response, start, end)));
+                return Array.from(new Set().add(new DetailsActions.GetDetailsSuccess(response, start, end, state.tags.selected)));
             });
         });
 }

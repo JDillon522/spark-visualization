@@ -1,5 +1,6 @@
 import { Action } from '@ngrx/store';
 import { DataPoint } from '../../models/dataPoint';
+import { Tag } from '../../models/tag';
 
 export const GET_DETAILS = '[Details] Get details about tag';
 export const GET_DETAILS_SUCCESS = '[Details] Get details successfully';
@@ -16,7 +17,7 @@ export class GetDetails implements Action {
 
 export class GetDetailsSuccess implements Action {
     readonly type = GET_DETAILS_SUCCESS;
-    constructor(private details: DataPoint[], private start: string, private end: string) {}
+    constructor(private details: DataPoint[], private start: string, private end: string, private tag: Tag) {}
 }
 
 export class GetDetailsError implements Action {

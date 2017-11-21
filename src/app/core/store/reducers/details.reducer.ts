@@ -35,9 +35,24 @@ function formatLineChart(data, start, end): LineChart {
   let startMoment = moment(start, 'YYYY-MM-DD');
   const labels: string[] = [];
 
-  // Reduce the magnituted of data to points pulled on the hour
+  // Reduce the magnitude of data to points pulled on the hour
   const chunkedData = _.chunk(data, data.length / durationInHours);
-  const reducedChunks = _.map(chunkedData, (chunk: DataPoint[]) => chunk[0].value);
+  const reducedChunks = _.map(chunkedData, (chunk: DataPoint[]) => {
+    switch (typeof chunk[0].value) {
+      case 'boolean':
+        return chunk[0].value ? 1 : 0;
+
+      case 'number':
+        return chunk[0].value;
+
+      case 'string':
+        return chunk[0].value === 'On' ? 1 : 0;
+
+      default:
+        break;
+    }
+
+  });
 
   // Create the list of labels
   for (let index = 0; index < durationInHours; index++) {
@@ -60,4 +75,9 @@ function formatLineChart(data, start, end): LineChart {
     label: `${start} to ${end}`
   });
   return lineChart;
+}
+
+function formatPieChart(data) {
+
+  return data;
 }
