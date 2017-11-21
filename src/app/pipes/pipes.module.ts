@@ -8,8 +8,8 @@ import { LogPipe } from './log/log.pipe';
     CommonModule
   ],
   declarations: [
-    // LogPipe,
-    // MapToIterablePipe
+    LogPipe,
+    MapToIterablePipe
   ]
 })
 export class PipesModule { }
