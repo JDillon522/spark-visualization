@@ -1,7 +1,8 @@
-# Angular 2 and Node.js / Express boilerplate
+# Spark-Visualization
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.4.
 
+Deployed to https://timeseries-spark.herokuapp.com
 ## To Run Locally
 ```bash
 npm install
@@ -20,6 +21,9 @@ ng build --watch --dev
 
 ## Notes:
 Built with ngrx.
+Codeship CI integration.
 
-## TODO
-- Improve node server to use SSL
+## Test:
+```bash
+npm test
+```
