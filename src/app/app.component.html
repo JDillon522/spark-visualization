@@ -1,1 +1,22 @@
+<mat-toolbar color="primary">
+    <span>Time Series</span>
+
+    <span class="flexMiddle"></span>
+
+    <span>
+        <mat-menu #appMenu="matMenu">
+            <button mat-menu-item routerLink="/tags" routerLinkActive="active">
+                Tags
+            </button>
+            <button mat-menu-item routerLink="/details" routerLinkActive="active">
+                Details
+            </button>
+        </mat-menu>
+
+        <button mat-icon-button [matMenuTriggerFor]="appMenu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+    </span>
+
+</mat-toolbar>
 <router-outlet></router-outlet>

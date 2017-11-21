@@ -4,6 +4,7 @@ import { FourOFourComponent } from './four-o-four/four-o-four.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { TagsComponent } from './tags/tags.component';
 import { AppSharedModule } from '../shared/shared.module';
+import { DetailsComponent } from './details/details.component';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { AppSharedModule } from '../shared/shared.module';
   ],
   declarations: [
     FourOFourComponent,
-    TagsComponent
+    TagsComponent,
+    DetailsComponent
   ]
 })
 export class PagesModule { }
