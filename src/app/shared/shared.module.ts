@@ -5,7 +5,7 @@ import {
   MatTooltipModule, MatFormFieldModule, MatInputModule, MatListModule, MatExpansionModule, MatProgressSpinnerModule, MatCheckboxModule,
   MatTableModule, MatSortModule, MatTabsModule
 } from '@angular/material';
-import { DataTableModule, SharedModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, ChartModule } from 'primeng/primeng';
 import { CdkTableModule } from '@angular/cdk/table';
 
 @NgModule({
@@ -30,6 +30,7 @@ import { CdkTableModule } from '@angular/cdk/table';
     MatCheckboxModule,
     DataTableModule,
     SharedModule,
+    ChartModule,
     MatTabsModule
 
     // MatTableModule,

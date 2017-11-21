@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
 import { Tag } from '../../core/models/tag';
 import { DataPoint } from '../../core/models/dataPoint';
+import { LineChart } from '../../core/models/chartTypes';
 
 @Component({
   selector: 'app-details',
@@ -15,10 +16,11 @@ export class DetailsComponent implements OnInit, OnDestroy {
   private detailsSubscription: Subscription;
 
   public tagMeta: Tag;
-  public details: DataPoint[];
+  public details: LineChart;
 
   constructor(
-    private store: Store<fromRoot.State>
+    private store: Store<fromRoot.State>,
+
   ) { }
 
   ngOnInit() {
@@ -35,4 +37,6 @@ export class DetailsComponent implements OnInit, OnDestroy {
     this.selectedTagSubscription.unsubscribe();
     this.detailsSubscription.unsubscribe();
   }
+
+
 }
