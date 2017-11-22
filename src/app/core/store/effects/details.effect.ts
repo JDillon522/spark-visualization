@@ -13,6 +13,7 @@ import { DetailsService } from '../../../services/details/details.service';
 import { DataPoint } from '../../models/dataPoint';
 import 'rxjs/add/operator/concatMap';
 import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/withLatestFrom';
 
 @Injectable()
 export class DetailsEffects {

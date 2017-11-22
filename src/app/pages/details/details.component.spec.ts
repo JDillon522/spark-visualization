@@ -34,7 +34,7 @@ describe('DetailsComponent', () => {
         ChartModule,
         StoreModule.forRoot({
           ...fromRoot.reducers,
-          'tag': combineReducers(fromDetails.reducer)
+          'details': combineReducers(fromDetails.reducer)
         })
 
       ],
